@@ -41,7 +41,7 @@ class TestUserModel(BaseTestCase):
     def test_to_json(self):
         user = add_user('justatest', 'test@test.com', 'test')
         self.assertTrue(isinstance(user.to_json(), dict))
-    
+
     def test_passwords_are_random(self):
         user_one = add_user('justatest', 'test@test.com', 'test')
         user_two = add_user('justatest2', 'test@test2.com', 'test')
@@ -51,13 +51,14 @@ class TestUserModel(BaseTestCase):
         user = add_user('justatest', 'test@test.com', 'test')
         auth_token = user.encode_auth_token(user.id)
         self.assertTrue(isinstance(auth_token, bytes))
-    
+
     def test_decode_auth_token(self):
         user = add_user('justatest', 'test@test.com', 'test')
         auth_token = user.encode_auth_token(user.id)
         self.assertTrue(isinstance(auth_token, bytes))
         user_id = user.decode_auth_token(auth_token)
         self.assertEqual(user_id, user.id)
+
 
 if __name__ == '__main__':
     unittest.main()
