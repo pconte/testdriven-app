@@ -1,9 +1,10 @@
 import datetime
 import jwt
 
-from sqlalchemy.sql import func
-from project import db, bcrypt
 from flask import current_app
+from sqlalchemy.sql import func
+
+from project import db, bcrypt
 
 
 class User(db.Model):
